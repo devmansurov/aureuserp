@@ -1,0 +1,30 @@
+{
+    "name": "webkul/locales",
+    "description": "",
+    "authors": [
+        {
+            "name": "Aureus ERP",
+            "email": "support@aureuserp.in"
+        }
+    ],
+    "extra": {
+        "laravel": {
+            "providers": [
+                "Webkul\\Locale\\Providers\\LocaleServiceProvider"
+            ],
+            "aliases": {}
+        }
+    },
+    "autoload": {
+        "psr-4": {
+            "Webkul\\Locale\\": "src/",
+            "Webkul\\Locale\\Database\\Factories\\": "database/factories/",
+            "Webkul\\Locale\\Database\\Seeders\\": "database/seeders/"
+        }
+    },
+    "autoload-dev": {
+        "psr-4": {
+            "Webkul\\Locale\\Tests\\": "tests/"
+        }
+    }
+}
