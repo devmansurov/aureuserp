@@ -1,0 +1,16 @@
+<?php
+
+namespace Webkul\Locale\Models;
+
+use Illuminate\Database\Eloquent\Model;
+
+class Locale extends Model
+{
+    protected $fillable = [
+        'code',
+        'name',
+        'native_name',
+        'flag',
+        'active',
+    ];
+}

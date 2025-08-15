@@ -18,6 +18,8 @@ use Illuminate\Routing\Middleware\SubstituteBindings;
 use Illuminate\Session\Middleware\AuthenticateSession;
 use Illuminate\Session\Middleware\StartSession;
 use Illuminate\View\Middleware\ShareErrorsFromSession;
+use Filament\View\PanelsRenderHook;
+use Webkul\Locale\Models\Locale;
 use Webkul\Support\PluginManager;
 
 class AdminPanelProvider extends PanelProvider
@@ -31,6 +33,7 @@ class AdminPanelProvider extends PanelProvider
             ->id('admin')
             ->path('admin')
             ->login()
+            ->locale(fn () => session('locale', config('app.locale')))
             ->favicon(asset('images/favicon.ico'))
             ->brandLogo(asset('images/logo-light.svg'))
             ->darkModeBrandLogo(asset('images/logo-dark.svg'))
@@ -72,6 +75,12 @@ class AdminPanelProvider extends PanelProvider
                     ]),
                 PluginManager::make(),
             ])
+            ->renderHook(
+                PanelsRenderHook::TOPBAR_END,
+                fn () => view('locales::filament.language-switcher', [
+                    'locales' => Locale::where('active', true)->get(),
+                ]),
+            )
             ->middleware([
                 EncryptCookies::class,
                 AddQueuedCookiesToResponse::class,

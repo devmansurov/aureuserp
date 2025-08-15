@@ -21,5 +21,7 @@ return [
     Webkul\Partner\PartnerPlugin::class,
     Webkul\TimeOff\TimeOffPlugin::class,
     Webkul\Timesheet\TimesheetPlugin::class,
+    Webkul\Subscriber\SubscriberPlugin::class,
+    Webkul\Locale\LocalePlugin::class,
     Webkul\Website\WebsitePlugin::class,
 ];
